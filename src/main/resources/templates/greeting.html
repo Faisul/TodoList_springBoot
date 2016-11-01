@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link href="../css/bootstrap-theme.css" rel="stylesheet" th:href="@{/css/bootstrap-theme.css}" type="text/css"/>
+	<link href="../css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" type="text/css" />
+	<link href="../css/bootstrap-theme.min.css" rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}" type="text/css" />
+	<link href="../css/home.css" rel="stylesheet" th:href="@{/css/home.css}" type="text/css"/>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+	
+</head>
+<body>
+
+
+    <form action="/addTask" class="inline">
+	    <div class="col-lg-11 col-lg-offset-0">
+			    <div class="input-group">
+				      <input type="text" id="msg"  name="msg" class="form-control" placeholder="Add a new Task" required="true"/>
+				      <input type="text" id="date" name="date" class ="form-control" placeholder="Due Date"/>
+					      <span class="input-group-btn">
+					        	<button class="btn round" id="plus" type="submit"><i class="glyphicon glyphicon-plus"></i></button>
+					      </span>
+			    </div><!-- /input-group -->
+		</div><!-- /.col-lg-6--> 
+    </form>
+    
+    
+    <div class="col-lg-12">
+    	<hr/>
+    	<br/>
+    </div>
+	<div class="col-lg-12 text-center day">   
+    		<p><h3>Today</h3></p>
+    </div>
+    
+    <div class="col-lg-11 col-lg-offset-0">
+    	<div class="col-lg-12 list-group">
+			<a th:href="@{/complete(user=1,id=${msg.id},action='c')}" class="list-group-item taskact" th:each="msg : ${msgs}" th:if="${#dates.createNow() ge msg.dueDate and msg.status eq 'In Progress'}" 
+				th:utext="${msg.text}"  th:id="${msg.id}" th:name="${msg.id}" data-toggle="tooltip" title="click to mark task as complete!">
+			</a>
+    		<del>	
+	   			 <a th:href="@{/complete(user=1,id=${msg.id},action='u')}" class="list-group-item" th:each="msg : ${msgs}" th:if="${#dates.createNow() ge msg.dueDate and msg.status eq 'Complete'}" th:utext="${msg.text}"
+	   			 	th:id="${msg.id}" th:name="${msg.id}"  data-toggle="tooltip" title="click to undo completed task">
+   			 	 </a>
+ 			</del>
+    	</div>
+    </div>
+    
+    <div class="col-lg-12 text-center day">   
+    		<p><h3>Later</h3></p>
+    </div>
+    
+    <div class="col-lg-11 col-lg-offset-0">
+    
+    	<div class="col-lg-12">
+    		<ul class="list-group">
+    			 	<li class="list-group-item taskact" th:each="msg : ${msgs}" th:if="${#dates.createNow() &lt; msg.dueDate}" th:text="${msg.text}"></li>
+    		</ul>
+    	</div>
+    </div>
+    
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed--> 
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+	<script src="../js/npm.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+	<script th:inline="javascript">
+    /*<![CDATA[*/
+               
+	 $(function() {
+		 $('#date').datepicker();
+		 $('[data-toggle="tooltip"]').tooltip();
+		  });
+	 /*]]>*/
+	 </script>
+</body>
+</html>

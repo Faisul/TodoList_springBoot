@@ -1,0 +1,44 @@
+body{
+	margin-top:40px;
+}
+.full {
+	background: url(https://quotefancy.com/download/26255/original/wallpaper.jpg) no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	background-size: cover;
+}
+#btn, .btn:hover, .btn:active, .btn:visited {
+    background-color: #800040!important;
+	color:#c0c0c0!important;
+}
+
+#plus{
+	 background-color: #B13E65 !important;
+	 color:#FFF !important;
+	
+}
+#foot{
+	color:#FFF !important;
+}
+#signin{
+	margin-top:80px;
+}
+#msg{
+	width:80% !important;
+}
+#date{
+	width:20% !important;
+}
+
+.round {
+    border-radius: 50%;
+}
+.day{
+	color: #B13E65;
+}
+.taskact{
+	    border-style: solid;
+    	border-left-color:#B13E65;
+    	border-left-width:10px;
+}
