@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login: Faisul's Todo App</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link href="../css/bootstrap-theme.css" rel="stylesheet" th:href="@{/css/bootstrap-theme.css}" type="text/css"/>
+	<link href="../css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" type="text/css" />
+	<link href="../css/bootstrap-theme.min.css" rel="stylesheet" th:href="@{/css/bootstrap-3.3.2-dist/bootstrap-theme.min.css}" type="text/css" />
+	<link href="../css/home.css" rel="stylesheet" th:href="@{/css/home.css}" type="text/css"/>
+</head>
+<body>
+	<div class="col-lg-4"></div>
+	<div class="panel panel-default col-lg-4 center">
+
+    <div class="panel-body">
+    
+         <!-- form start -->
+         <form action="/login" id="login-form" autocomplete="off">
+         
+         <div class="form-header">
+          <h3 class="form-title">Sign Up</h3>
+                      
+         </div>
+         
+         <div class="form-body">
+                      
+            <div class="form-group">
+                   <div class="input-group">
+                   <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                   <input name="user" type="text" class="form-control" placeholder="Username" required="true"/>
+                   </div>
+                   <span class="help-block" id="error" th:text="${error}"></span>
+              </div>
+
+			 <div class="form-group ">
+                   <div class="input-group">
+                   <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                   <input name="password" id="password" type="password" class="form-control" placeholder="Password" required="true"/>
+                   </div>  
+                   <span class="help-block" id="error" th:text="${error}"></span>
+              </div>
+              <div class="form-footer">
+              <a href="/signup">New User?</a>
+                 <button type="submit" class="btn pull-right" id="submit">
+                 <span class="glyphicon glyphicon-log-in"></span> Login
+                 </button>
+            </div>
+			</div>
+		</form>
+		</div>
+		
+		
+	</div>
+
+	<footer class="footer navbar-fixed-bottom">
+		<div>
+			<p id="foot" class="text-center"> Designed and built by <b>Faisul Ihshan AjmalKhan</b> </p>
+		</div>
+	</footer>
+    
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../static/bootstrap/js/bootstrap.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../static/bootstrap/js/npm.js"></script>
+</body>
+</html>

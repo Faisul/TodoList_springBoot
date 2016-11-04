@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sign Up: Faisul's Todo App</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link href="../css/bootstrap-theme.css" rel="stylesheet" th:href="@{/css/bootstrap-theme.css}" type="text/css"/>
+	<link href="../css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" type="text/css" />
+	<link href="../css/bootstrap-theme.min.css" rel="stylesheet" th:href="@{/css/bootstrap-3.3.2-dist/bootstrap-theme.min.css}" type="text/css" />
+	<link href="../css/home.css" rel="stylesheet" th:href="@{/css/home.css}" type="text/css"/>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+</head>
+<body>
+<div class="col-lg-3"></div>
+	<div class="panel panel-default col-lg-6 center">
+
+    <div class="panel-body">
+    
+         <!-- form start -->
+         <form action="newUser" id="register-form" autocomplete="off">
+         
+         <div class="form-header">
+          <h3 class="form-title">Sign Up</h3>
+                      
+         </div>
+         
+         <div class="form-body">
+                      
+            <div class="form-group">
+                   <div class="input-group">
+                   <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                   <input name="name" type="text" class="form-control" placeholder="Username" required="true"/>
+                   </div>
+                   <span class="help-block" id="error" th:text="${error}"></span>
+              </div>
+              
+              <div class="form-group">
+                   <div class="input-group">
+                   <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                   <input name="fname" type="text" class="form-control" placeholder="Firstname" required="true"/>
+                   </div>
+                   <span class="help-block" id="error" th:text="${error}"></span>
+              </div>
+              
+              <div class="form-group">
+                   <div class="input-group">
+                   <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                   <input name="lname" type="text" class="form-control" placeholder="Lastname" required="true"/>
+                   </div>
+                   <span class="help-block" id="error" th:text="${error}"></span>
+              </div>
+                        
+              <div class="form-group">
+                   <div class="input-group">
+                   <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+                   <input name="email" type="text" class="form-control" placeholder="Email" required="true"/>
+                   </div> 
+                   <span class="help-block" id="error" th:text="${error}"></span>
+              </div>
+                        
+                        
+              <div class="form-group ">
+                   <div class="input-group">
+                   <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                   <input name="password" id="password" type="password" class="form-control" placeholder="Password" required="true"/>
+                   </div>  
+                   <span class="help-block" id="error" th:text="${error}"></span>
+              </div>
+                       
+              <div class="form-group">
+                   <div class="input-group">
+                   <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                   <input name="cpassword" type="password" class="form-control" placeholder="Retype Password" required="true"/>
+                   </div>  
+                   <span class="help-block" id="error" th:text="${error}"></span>
+              </div>
+                        
+            </div>
+            
+            <div class="form-footer">
+                 <button type="submit" class="btn" id="submit">
+                 <span class="glyphicon glyphicon-log-in"></span> Sign Me Up !
+                 </button>
+            </div>
+
+
+            </form>
+            
+           </div>
+
+ </div>
+ <footer class="footer navbar-fixed-bottom">
+		<div>
+			<p id="foot" class="text-center"> Designed and built by <b>Faisul Ihshan AjmalKhan</b> </p>
+		</div>
+	</footer>
+ <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    
+</body>
+</html>

@@ -1,6 +1,10 @@
-body{
-	margin-top:40px;
+#container{
+	margin-top:50px;
 }
+.panel{
+	margin-top:70px;
+}
+
 .full {
 	background: url(https://quotefancy.com/download/26255/original/wallpaper.jpg) no-repeat center center fixed; 
 	  -webkit-background-size: cover;
@@ -18,8 +22,9 @@ body{
 	 color:#FFF !important;
 	
 }
-#foot{
-	color:#FFF !important;
+#submit{
+	background-color: #B13E65 !important;
+ 	color:#FFF !important;
 }
 #signin{
 	margin-top:80px;
@@ -29,6 +34,9 @@ body{
 }
 #date{
 	width:20% !important;
+}
+.form-title{
+	color:#B13E65;
 }
 
 .round {
@@ -41,4 +49,12 @@ body{
 	    border-style: solid;
     	border-left-color:#B13E65;
     	border-left-width:10px;
+}
+.container{
+	align-items: center;
+}
+
+li>a{
+	color: #B13E65 !important;
+}
 }
