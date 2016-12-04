@@ -54,7 +54,13 @@
 	align-items: center;
 }
 
-li>a{
+.dropdown-toggle{
 	color: #B13E65 !important;
 }
+
+#username {
+        margin-left: 15px;
+        color: #B13E65 !important;
+ }
+
 }

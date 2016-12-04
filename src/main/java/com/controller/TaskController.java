@@ -7,7 +7,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.lang.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +20,8 @@ import com.domain.User;
 import com.domain.repository.TaskRepository;
 import com.domain.repository.UserRepository;
 
-@Controller
-@SessionAttributes("UserSes")
+@Controller("task")
+@SessionAttributes("user")
 public class TaskController {
 	@Autowired
 	TaskRepository taskRepo;
@@ -38,7 +37,7 @@ public class TaskController {
     }
     
     @RequestMapping("/addTask")
-    public String addTask(@RequestParam(value="msg", required=true) String msg, @RequestParam(value="date", required=false) String date, Model model) throws ParseException {
+    public String addTask(@RequestParam(value="msg", required=true) String msg, @RequestParam(value="date", required=false) String date,WebRequest request, Model model) throws ParseException {
 
     	Task task;
     	if(msg!=null && !msg.isEmpty()){
@@ -54,8 +53,9 @@ public class TaskController {
     		 else{
     			 temp = sdf.parse(tomorrow);
     		 }
+    		 
     		 task.setDueDate(temp);
-    		 User u= userRepo.findByFirstName((String)model.asMap().get("UserSes"));
+    		 User u= userRepo.findById(new Long(request.getAttribute("userId", WebRequest.SCOPE_SESSION).toString()));
     		 task.setUser(u);
     		 taskRepo.save(task);
     	}
@@ -77,60 +77,4 @@ public class TaskController {
     	
     }
     
-    @RequestMapping("/")
-    public String goHome(Model model) {
-        return "Login";
-    }
-	
-	@RequestMapping("/signup")
-    public String newUser(Model model) {
-        return "SignUp";
-    }
-	
-	
-	@RequestMapping("/newUser")
-    public String createuser(@RequestParam(value="name", required=true) String name
-    		,@RequestParam(value="fname", required=true) String fname
-    		,@RequestParam(value="lname", required=true) String lname
-    		,@RequestParam(value="email", required=true) String email
-    		,@RequestParam(value="password", required=true) String password
-    		, Model model) {
-				
-		if(!(null!=name && null!= fname && null!=lname && null!=email && null!=password) )
-		{
-			model.addAttribute("error", "Invalid Details");
-			return "SignUp";
-		}
-		User x = userRepo.findByUserName(name);
-		if(x == null){
-			User user = new User(name, fname, lname, email, password);
-			userRepo.save(user);
-		}else{
-			model.addAttribute("error", "UserName already exists");
-			return "SignUp";
-		}
-		
-		return "Login";
-	}
-    @RequestMapping("/login")
-    public String login(@RequestParam(value="user", required=true) String name,@RequestParam(value="password", required=true) String password,WebRequest request, Model model) {
-    	User user = userRepo.findByUserName(name);
-    	if(null != user){
-    		if(password.equals(user.getPassword())){
-    			request.setAttribute("userId", user.getId(), WebRequest.SCOPE_SESSION);
-    			request.setAttribute("UserSes", WordUtils.capitalize(user.getFirstName()), WebRequest.SCOPE_SESSION);
-    		}
-    	}else{
-    		model.addAttribute("error", "Invalid Details");
-    		return "Login";
-    	}
-		return "redirect:todo";
-    }
-    
-    @RequestMapping("/logout")
-    public String logout( WebRequest request, Model model) {
-    	request.removeAttribute("userId", WebRequest.SCOPE_SESSION);
-    	request.removeAttribute("UserSes", WebRequest.SCOPE_SESSION);
-    	return "Login";
-    }
 }
