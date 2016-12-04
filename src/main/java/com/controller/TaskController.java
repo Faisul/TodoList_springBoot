@@ -101,8 +101,15 @@ public class TaskController {
 			model.addAttribute("error", "Invalid Details");
 			return "SignUp";
 		}
-		User user = new User(name, fname, lname, email, password);
-		userRepo.save(user);
+		User x = userRepo.findByUserName(name);
+		if(x == null){
+			User user = new User(name, fname, lname, email, password);
+			userRepo.save(user);
+		}else{
+			model.addAttribute("error", "UserName already exists");
+			return "SignUp";
+		}
+		
 		return "Login";
 	}
     @RequestMapping("/login")
