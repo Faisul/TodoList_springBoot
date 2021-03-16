@@ -11,7 +11,7 @@ import com.domain.Task;
 public class TaskServiceTest {
 
 	@Test
-	public void test() {
+	public void test_success() {
 		Task task = new Task();
 		task.setDueDate(new Date());
 		Assert.isTrue(new TaskService().isToday(task));
